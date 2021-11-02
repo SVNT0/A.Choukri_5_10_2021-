@@ -17,3 +17,13 @@ async function getArticles() {
                 let productLink = document.createElement("a");
                 document.querySelector(".items").appendChild(productLink);
                 productLink.href = `product.html?id=${resultatAPI[article]._id}`;
+                
+                // Insertion de l'élément "article"
+                let productArticle = document.createElement("article");
+                productLink.appendChild(productArticle);
+                
+                // Insertion de l'image
+                let productImg = document.createElement("img");
+                productArticle.appendChild(productImg);
+                productImg.src = resultatAPI[article].imageUrl;
+                productImg.alt = resultatAPI[article].altTxt;

@@ -30,25 +30,25 @@ function getArticle() {
 }
 
 function getPost(article){
-    // Insertion de l'image
+    // Insertion de l'élément image
     let productImg = document.createElement("img");
     document.querySelector(".item__img").appendChild(productImg);
     productImg.src = article.imageUrl;
     productImg.alt = article.altTxt;
 
-    // Modification du titre "h1"
+    // Titre "h1"
     let productName = document.getElementById('title');
     productName.innerHTML = article.name;
 
-    // Modification du prix
+    // Prix
     let productPrice = document.getElementById('price');
     productPrice.innerHTML = article.price;
 
-    // Modification de la description
+    // Description
     let productDescription = document.getElementById('description');
     productDescription.innerHTML = article.description;
 
-    // Insertion des options de couleurs
+    // Insertion des différentes options de couleurs
     for (let colors of article.colors){
         console.table(colors);
         let productColors = document.createElement("option");
@@ -59,7 +59,7 @@ function getPost(article){
     addToCart(article);
 }
 
-//Gestion du panier
+//Gestion du panier de commande
 function addToCart(article) {
     const btn_envoyerPanier = document.querySelector("#addToCart");
 
@@ -67,13 +67,13 @@ function addToCart(article) {
     btn_envoyerPanier.addEventListener("click", (event)=>{
         if (quantityPicked.value > 0 && quantityPicked.value <=100 && quantityPicked.value != 0){
 
-    //Recupération du choix de la couleur
+    //Choix de la couleur
     let choixCouleur = colorPicked.value;
                 
-    //Recupération du choix de la quantité
+    //Choix de la quantité
     let choixQuantite = quantityPicked.value;
 
-    //Récupération des options de l'article à ajouter au panier
+    //Récupération des infos de l'article pour l'ajouter au panier
     let optionsProduit = {
         idProduit: idProduct,
         couleurProduit: choixCouleur,
@@ -85,7 +85,7 @@ function addToCart(article) {
         altImgProduit: article.altTxt
     };
 
-    //Initialisation du local storage
+    //Initialisation local storage
     let produitLocalStorage = JSON.parse(localStorage.getItem("produit"));
 
     //fenêtre pop-up

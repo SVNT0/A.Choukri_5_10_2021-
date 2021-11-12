@@ -4,8 +4,8 @@ var idProduct = url.searchParams.get("id");
 console.log(idProduct);
 let article = "";
 
-const colorPicked = document. querySelector("#colors");
-const quantityPicked = document.querySelector("#quantity");
+const colorPicked = document. querySelector("#couleurs");
+const quantityPicked = document.querySelector("#quantité");
 
 getArticle();
 
@@ -31,7 +31,7 @@ function getArticle() {
 
 function getPost(article){
     // Insertion de l'élément image
-    let productImg = document.createElement("img");
+    let productImg = document.createElement("image");
     document.querySelector(".item__img").appendChild(productImg);
     productImg.src = article.imageUrl;
     productImg.alt = article.altTxt;

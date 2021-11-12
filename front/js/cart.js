@@ -15,3 +15,24 @@ for (let produit in produitLocalStorage){
     document.querySelector("#cart__items").appendChild(productArticle);
     productArticle.className = "cart__item";
     productArticle.setAttribute('data-id', produitLocalStorage[produit].idProduit);
+
+    // Insertion de l'élément "div"
+    let productDivImg = document.createElement("div");
+    productArticle.appendChild(productDivImg);
+    productDivImg.className = "cart__item__img";
+
+    // Insertion de l'image
+    let productImg = document.createElement("img");
+    productDivImg.appendChild(productImg);
+    productImg.src = produitLocalStorage[produit].imgProduit;
+    productImg.alt = produitLocalStorage[produit].altImgProduit;
+    
+    // Insertion de l'élément "div"
+    let productItemContent = document.createElement("div");
+    productArticle.appendChild(productItemContent);
+    productItemContent.className = "cart__item__content";
+
+    // Insertion de l'élément "div"
+    let productItemContentTitlePrice = document.createElement("div");
+    productItemContent.appendChild(productItemContentTitlePrice);
+    productItemContentTitlePrice.className = "cart__item__content__titlePrice";

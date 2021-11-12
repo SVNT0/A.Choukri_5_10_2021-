@@ -77,3 +77,39 @@ for (let produit in produitLocalStorage){
         productQuantity.setAttribute("min", "1");
         productQuantity.setAttribute("max", "100");
         productQuantity.setAttribute("name", "itemQuantity");
+
+        // Insertion de l'élément "div"
+    let productItemContentSettingsDelete = document.createElement("div");
+    productItemContentSettings.appendChild(productItemContentSettingsDelete);
+    productItemContentSettingsDelete.className = "cart__item__content__settings__delete";
+
+    // Insertion de "p" supprimer
+    let productSupprimer = document.createElement("p");
+    productItemContentSettingsDelete.appendChild(productSupprimer);
+    productSupprimer.className = "deleteItem";
+    productSupprimer.innerHTML = "Supprimer";
+}
+}}
+getCart();
+
+function getTotals(){
+
+    // Récupération du total des quantités
+    var elemsQtt = document.getElementsByClassName('itemQuantity');
+    var myLength = elemsQtt.length,
+    totalQtt = 0;
+
+    for (var i = 0; i < myLength; ++i) {
+        totalQtt += elemsQtt[i].valueAsNumber;
+    }
+
+    let productTotalQuantity = document.getElementById('totalQuantity');
+    productTotalQuantity.innerHTML = totalQtt;
+    console.log(totalQtt);
+
+    // Récupération du prix total
+    totalPrice = 0;
+
+    for (var i = 0; i < myLength; ++i) {
+        totalPrice += (elemsQtt[i].valueAsNumber * produitLocalStorage[i].prixProduit);
+    }

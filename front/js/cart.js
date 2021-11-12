@@ -236,3 +236,84 @@ function getForm() {
             addressErrorMsg.innerHTML = 'Veuillez renseigner ce champ.';
         }
     };
+
+    //validation de la ville
+    const validCity = function(inputCity) {
+        let cityErrorMsg = inputCity.nextElementSibling;
+
+        if (charRegExp.test(inputCity.value)) {
+            cityErrorMsg.innerHTML = '';
+        } else {
+            cityErrorMsg.innerHTML = 'Veuillez renseigner ce champ.';
+        }
+    };
+
+    //validation de l'email
+    const validEmail = function(inputEmail) {
+        let emailErrorMsg = inputEmail.nextElementSibling;
+
+        if (emailRegExp.test(inputEmail.value)) {
+            emailErrorMsg.innerHTML = '';
+        } else {
+            emailErrorMsg.innerHTML = 'Veuillez renseigner votre email.';
+        }
+    };
+    }
+getForm();
+
+//Envoi des informations client au localstorage
+function postForm(){
+    const btn_commander = document.getElementById("order");
+
+    //Ecouter le panier
+    btn_commander.addEventListener("click", (event)=>{
+    
+        //Récupération des coordonnées du formulaire client
+        let inputName = document.getElementById('firstName');
+        let inputLastName = document.getElementById('lastName');
+        let inputAdress = document.getElementById('address');
+        let inputCity = document.getElementById('city');
+        let inputMail = document.getElementById('email');
+
+        //Construction d'un array depuis le local storage
+        let idProducts = [];
+        for (let i = 0; i<produitLocalStorage.length;i++) {
+            idProducts.push(produitLocalStorage[i].idProduit);
+        }
+        console.log(idProducts);
+
+        const order = {
+            contact : {
+                firstName: inputName.value,
+                lastName: inputLastName.value,
+                address: inputAdress.value,
+                city: inputCity.value,
+                email: inputMail.value,
+            },
+            products: idProducts,
+        } 
+
+        const options = {
+            method: 'POST',
+            body: JSON.stringify(order),
+            headers: {
+                'Accept': 'application/json', 
+                "Content-Type": "application/json" 
+            },
+        };
+
+        fetch("http://localhost:3000/api/products/order", options)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            localStorage.clear();
+            localStorage.setItem("orderId", data.orderId);
+
+            document.location.href = "confirmation.html";
+        })
+        .catch((err) => {
+            alert ("Problème avec fetch : " + err.message);
+        });
+        })
+}
+postForm();

@@ -85,7 +85,7 @@ function addToCart(article) {
         altImgProduit: article.altTxt
     };
 
-    //Initialisation local storage
+    //Initialisation du local storage
     let produitLocalStorage = JSON.parse(localStorage.getItem("produit"));
 
     //fenêtre pop-up

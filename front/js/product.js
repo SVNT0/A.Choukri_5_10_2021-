@@ -88,9 +88,9 @@ function addToCart(article) {
     //Initialisation du local storage
     let produitLocalStorage = JSON.parse(localStorage.getItem("produit"));
 
-    //fenêtre pop-up
+    //fenêtre pop-up de confirmation
     const popupConfirmation =() =>{
-        if(window.confirm(`Votre commande de ${choixQuantite} ${article.name} ${choixCouleur} est ajoutée au panier
+        if(window.confirm(`Votre commande de ${choixQuantite} ${article.name} ${choixCouleur} a été ajoutée au panier
 Pour consulter votre panier, cliquez sur OK`)){
             window.location.href ="cart.html";
         }

@@ -169,7 +169,7 @@ function deleteProduct() {
 }
 deleteProduct();
 
-//Instauration formulaire avec regex
+//Instauration formulaire avec les expréssions régulières pour filtrer
 function getForm() {
     // Ajout des Regex
     let form = document.querySelector(".cart__order__form");

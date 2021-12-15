@@ -297,6 +297,7 @@ function postForm(){
         const options = {
             method: 'POST',
             body: JSON.stringify(order),
+            mode: "no-cors", 
             headers: {
                 'Accept': 'application/json', 
                 "Content-Type": "application/json" 
@@ -313,7 +314,9 @@ function postForm(){
             document.location.href = "confirmation.html";
         })
         .catch((err) => {
+            console.log(data);
             alert ("Problème avec fetch : " + err.message);
+            
         });
         })
 }
